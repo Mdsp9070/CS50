@@ -4,18 +4,15 @@
 // Convert image to grayscale
 void grayscale(int height, int width, RGBTRIPLE image[height][width])
 {
-    float average = 0;
-    int newColor = 0;
-
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
         {
-            average = (image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3;
-            newColor  = round(average);
-            image[i][j].rgbtBlue = newColor;
-            image[i][j].rgbtGreen = newColor;
-            image[i][j].rgbtRed = newColor;
+            float avg = (image[i][j].rgbtBlue + image[i][j].rgbtGreen + image[i][j].rgbtRed) / 3.0;
+
+            image[i][j].rgbtBlue = round(avg);
+            image[i][j].rgbtGreen = round(avg);
+            image[i][j].rgbtRed = round(avg);
         }
     }
 }
