@@ -1,6 +1,6 @@
 # Implements linear search for names
 
-import sys
+from sys import exit
 
 # A list of names
 names = ["EMMA", "RODRIGO", "BRIAN", "DAVID"]
@@ -8,6 +8,6 @@ names = ["EMMA", "RODRIGO", "BRIAN", "DAVID"]
 # Search for EMMA
 if "EMMA" in names:
     print("Found")
-    sys.exit(0)
+    exit(0)
 print("Not found")
-sys.exit(1)
+exit(1)
