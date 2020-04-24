@@ -10,3 +10,13 @@ if len(argv) != 2:
 
 house = argv[1]
 
+data = db.execute('SELECT * FROM students ORDER BY last')
+
+for index in data:
+    if index['house'] == house:
+        if index['middle'] != None:
+            print(
+                f"{index['first']} {index['middle']} {index['last']}, born {index['birth']}")
+        else:
+            print(
+                f"{index['first']} {index['last']}, born {index['birth']}")
