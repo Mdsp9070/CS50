@@ -5,7 +5,7 @@ import csv
 with open("title.basics.tsv", "r") as titles:
 
     # Create DictReader
-    reader = csv.DictReader(tiles, delimiter="\t")
+    reader = csv.DictReader(titles, delimiter="\t")
 
     # Open CSV file
     with open("shows1.csv", "w") as shows:
