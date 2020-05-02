@@ -180,6 +180,18 @@ def login():
     else:
         return render_template("login.html")
 
+@app.route("/change", methods=["GET", "POST"])
+@login_required
+def change():
+    if request.method == "POST":
+        if request.form.get("password") != request.form.get("password2"):
+            return apology("New passwords must be the same")
+        pass_after = generate_password_hash(request.form.get("password"))
+        db.execute("UPDATE users SET hash = :hash WHERE id = :user_id", hash=pass_after, user_id=session["user_id"])
+        return redirect("/")
+    else:
+        return render_template("change.html")
+
 
 @app.route("/logout")
 def logout():
@@ -226,6 +238,7 @@ def register():
         db.execute("INSERT INTO users (username, hash) VALUES(:username, :hash)", username=request.form.get(
             "username"), hash=(generate_password_hash(request.form.get("password"))))
 
+        flash("Password changed!")
         return redirect("/")
     else:
         return render_template("register.html")
